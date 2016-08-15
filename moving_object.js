@@ -1,10 +1,12 @@
 
 
 function MovingObject(options){
+  console.log(options);
   this.position = options['pos'];
   this.velocity = options['vel'];
   this.radius = options['radius'];
   this.color = options['color'];
+  this.game = options['game'];
 }
 
 MovingObject.prototype.draw = function(ctx) {
@@ -26,7 +28,7 @@ MovingObject.prototype.draw = function(ctx) {
 MovingObject.prototype.move = function() {
   this.position = [this.position[0] + this.velocity[0],
     this.position[1] + this.velocity[1]];
-  return this.position;
+  this.position = this.game.wrap(this.position);
 };
 
 

@@ -7,7 +7,7 @@ Asteroid.COLOR = "green";
 
 
 function Asteroid(postion){
-  let options = { 'pos': postion['pos'], 'vel': Util.randomVec(6), 'color': Asteroid.COLOR, 'radius': Asteroid.RADIUS };
+  let options = {'game': postion['game'], 'pos': postion['pos'], 'vel': Util.randomVec(6), 'color': Asteroid.COLOR, 'radius': Asteroid.RADIUS };
   MovingObject.call(this, options);
 
 };
