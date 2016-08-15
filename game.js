@@ -1,8 +1,8 @@
 const Asteroid = require('./asteroid.js');
 const Util = require('./utils.js');
 
-Game.DIM_X = 150;
-Game.DIM_Y = 150;
+Game.DIM_X = 1500;
+Game.DIM_Y = 1500;
 Game.NUM_ASTEROIDS = 10;
 
 
@@ -23,7 +23,7 @@ Game.prototype.addAsteroids = function() {
 
 Game.prototype.draw = function(ctx) {
   ctx.clearRect(0, 0, this.xDim, this.yDim);
-
+  console.log('I\'m drawing');
   this.asteroids.forEach(function (asteroid){
     asteroid.draw(ctx);
   });
@@ -34,3 +34,5 @@ Game.prototype.moveObjects = function() {
     asteroid.move();
   });
 };
+
+module.exports = Game;

@@ -15,7 +15,7 @@ function Asteroid(postion){
 Util.inherits(Asteroid, MovingObject);
 
 
-module.exports(Asteroid);
+module.exports = Asteroid;
 
 
 // const asteroid = new Asteroid({'pos': [1, 1]});
