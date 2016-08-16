@@ -10,8 +10,13 @@ function Bullet(opt){
   MovingObject.call(this, options);
 
 }
-
 Util.inherits(Bullet, MovingObject);
+
+Bullet.prototype.move = function () {
+  this.position = [this.position[0] + this.velocity[0],
+    this.position[1] + this.velocity[1]];
+};
+
 
 
 module.exports = Bullet;

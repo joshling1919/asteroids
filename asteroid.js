@@ -7,7 +7,9 @@ Asteroid.COLOR = "green";
 
 
 function Asteroid(postion){
-  let options = {'game': postion['game'], 'pos': postion['pos'], 'vel': Util.randomVec(6), 'color': Asteroid.COLOR, 'radius': Asteroid.RADIUS };
+  let options = {'game': postion['game'], 'pos': postion['pos'],
+    'vel': Util.randomVec(4), 'color': Asteroid.COLOR,
+    'radius': Asteroid.RADIUS };
   MovingObject.call(this, options);
 
 }
@@ -18,6 +20,9 @@ Util.inherits(Asteroid, MovingObject);
 Asteroid.prototype.collideWith = function(otherObject) {
   if (otherObject instanceof Ship ) {
     otherObject.relocate();
+  } else if (!(otherObject instanceof Asteroid)) {
+    let ast = this;
+    this.game.remove(ast);
   }
 };
 
