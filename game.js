@@ -13,6 +13,7 @@ function Game(){
   this.asteroids = [];
   this.addAsteroids();
   this.ship = new Ship({'pos': Util.randomVec(Game.DIM_X), 'game': this});
+  this.bullets = [];
   this.numAsteroids = this.asteroids.length;
 }
 
@@ -41,7 +42,7 @@ Game.prototype.moveObjects = function() {
 
 Game.prototype.wrap = function(pos){
   if (pos[0] <= 0) {pos[0] = this.xDim - 1;}
-  if (pos[1] <= 0) {pos[1] = this.yDim - 1; } 
+  if (pos[1] <= 0) {pos[1] = this.yDim - 1; }
   return [pos[0]%this.xDim, pos[1]%this.yDim];
 };
 
@@ -68,7 +69,7 @@ Game.prototype.remove = function(asteroid) {
 };
 
 Game.prototype.allObjects = function() {
-  return this.asteroids.concat([this.ship]);
+  return this.asteroids.concat([this.ship]).concat(this.bullets);
 };
 
 module.exports = Game;

@@ -1,4 +1,5 @@
 const MovingObject = require("./moving_object.js");
+const Bullet = require("./bullet.js");
 const Util = require("./utils.js");
 
 Ship.COLOR = 'red';
@@ -22,6 +23,14 @@ Ship.prototype.power = function(impulse) {
   this.velocity[0] += impulse[0];
   this.velocity[1] += impulse[1];
 };
+
+Ship.prototype.fireBullet = function() {
+  let bullet = new Bullet({'pos': this.position, 'vel': [this.velocity[0] + 3, this.velocity[1] + 3],
+    'game': this.game});
+  console.log(bullet);
+  this.game.bullets.push(bullet);
+
+}
 
 module.exports = Ship;
 //

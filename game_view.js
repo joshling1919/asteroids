@@ -6,17 +6,19 @@ function GameView(ctx) {
 }
 
 GameView.prototype.bindKeyHandlers = function() {
-  key('w', () => this.game.ship.power([0, -.01]));
-  key('a', () => this.game.ship.power([-.01, 0]));
-  key('s', () => this.game.ship.power([0, .01]));
-  key('d', () => this.game.ship.power([.01, 0]));
-
+  key('w', () => this.game.ship.power([0, -1]));
+  key('a', () => this.game.ship.power([-1, 0]));
+  key('s', () => this.game.ship.power([0, 1]));
+  key('d', () => this.game.ship.power([1, 0]));
+  key('space', () => {
+    this.game.ship.fireBullet()
+  });
 };
 
 GameView.prototype.start = function() {
   let gamev = this;
+  gamev.bindKeyHandlers();
   setInterval(function(){
-    gamev.bindKeyHandlers();
     gamev.game.step();
     gamev.game.draw(gamev.ctx);
   }, 20);
