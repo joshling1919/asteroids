@@ -2,7 +2,7 @@ const MovingObject = require("./moving_object.js");
 const Util = require("./utils.js");
 
 Ship.COLOR = 'red';
-Ship.RADIUS = 5;
+Ship.RADIUS = 10;
 
 function Ship(postion){
   let options = {'game': postion['game'], 'pos': postion['pos'],
@@ -18,6 +18,10 @@ Ship.prototype.relocate = function() {
   this.velocity = [0, 0];
 };
 
+Ship.prototype.power = function(impulse) {
+  this.velocity[0] += impulse[0];
+  this.velocity[1] += impulse[1];
+};
 
 module.exports = Ship;
 //

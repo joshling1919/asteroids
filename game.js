@@ -22,7 +22,6 @@ Game.prototype.addAsteroids = function() {
     this.asteroids.push(
       new Asteroid({'pos': Util.randomVec(Game.DIM_X), 'game': this})
     );
-    console.log(this.asteroids[i].game);
   }
 };
 
@@ -41,6 +40,8 @@ Game.prototype.moveObjects = function() {
 
 
 Game.prototype.wrap = function(pos){
+  if (pos[0] <= 0) {pos[0] = this.xDim - 1;}
+  if (pos[1] <= 0) {pos[1] = this.yDim - 1; } 
   return [pos[0]%this.xDim, pos[1]%this.yDim];
 };
 
